@@ -1,0 +1,8 @@
+= Open Dolphin Modules
+
+various modules for Open Dolphin.
+Currently available:
+
+* Spring Support
+* JavaEE
+
