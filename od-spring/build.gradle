@@ -9,6 +9,13 @@ buildscript {
 
 apply plugin: 'groovy'
 apply plugin: 'io.spring.dependency-management'
+apply plugin : 'maven'
+
+group = 'org.open-dolphin'
+version = '0.1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenLocal()
@@ -26,7 +33,7 @@ dependencyManagement {
 }
 
 dependencies {
-    compile project(':od-springboot-javaee')
+    compile findProject(':odm-web') ? project(':odm-web') : 'org.open-dolphin:odm-web:0.1.0-SNAPSHOT'
 
     compile "org.codehaus.groovy:groovy-all:$groovyVersion"
     compile 'org.open-dolphin:dolphin-server:1.0-RC1'
