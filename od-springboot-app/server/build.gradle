@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -20,7 +21,8 @@ group = 'com.mycompany'
 version = '1.0.0-SNAPSHOT'
 
 repositories {
-     mavenCentral()
+     mavenLocal()
+     jcenter()
 }
 
 dependencyManagement {

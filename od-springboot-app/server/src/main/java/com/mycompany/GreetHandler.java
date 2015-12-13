@@ -20,26 +20,8 @@ public class GreetHandler {
 	public void handle() {
 		String name = (String) serverDolphin.getAt(PM_APP).getAt(ATT_NAME).getValue();
 		ServerAttribute greeting = serverDolphin.getAt(PM_APP).getAt(ATT_GREETING);
-
-
-		// Use 'tryboom' as name to throw exception outside of try/catch:
-		if (! name.startsWith("try")) {
-			checkName(name);
-		}
-
-		// Use 'boom' as name to throw exception inside of try/catch:
-		try {
-			checkName(name);
-			greeting.setValue("Hallo " + name + " !");
-		} catch (Exception e) {
-			greeting.setValue("Exception caught: " + e.getMessage());
-		}
+		greeting.setValue("Hello " + name + " !");
 	}
 
-	private void checkName(String name) {
-		if (name.contains("boom")) {
-			throw new RuntimeException("boom");
-		}
-	}
 
 }
