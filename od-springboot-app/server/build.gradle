@@ -31,7 +31,7 @@ dependencyManagement {
 
 dependencies {
 	compile project(':shared')
-    compile project(':od-spring-boot')
+    compile findProject(':odm-spring') ? project(':odm-spring') : 'org.open-dolphin:odm-spring:0.1.0-SNAPSHOT'
     compile "org.open-dolphin:dolphin-server:$dolphinVersion"
     compile 'javax.servlet:javax.servlet-api:3.1.0'
 }
