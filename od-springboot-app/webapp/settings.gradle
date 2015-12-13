@@ -1,0 +1,17 @@
+rootProject.name = 'od_springboot_demo'
+
+includeFrom 'shared', '../shared'
+includeFrom 'server', '../server'
+includeFrom 'od-spring-boot', '../../od-spring-boot'
+includeFrom 'od-springboot-javaee', '../../od-springboot-javaee'
+
+def includeFrom(String name, String path, String buildFilename = null) {
+	include ":${name}"
+	ProjectDescriptor projectDescriptor = project(":${name}")
+	projectDescriptor.projectDir = new File(path)
+	if (buildFilename) {
+		projectDescriptor.buildFileName = buildFilename
+	}
+	
+}
+

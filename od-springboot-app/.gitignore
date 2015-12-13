@@ -1,0 +1,10 @@
+out/
+build/
+.gradle/
+.idea/
+*.iml
+classes/
+.lazybones/
+target/
+nb-configuration.xml
+

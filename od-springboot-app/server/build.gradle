@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'io.spring.dependency-management'
+
+ext {
+    springBootVersion = '1.3.0.RELEASE'
+}
+
+group = 'com.mycompany'
+version = '1.0.0-SNAPSHOT'
+
+repositories {
+     mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+
+dependencies {
+	compile project(':shared')
+    compile project(':od-spring-boot')
+    compile "org.open-dolphin:dolphin-server:$dolphinVersion"
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8

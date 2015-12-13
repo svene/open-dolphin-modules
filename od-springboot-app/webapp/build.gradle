@@ -1,0 +1,50 @@
+apply plugin: "groovy"
+apply plugin: "spring-boot"
+apply plugin: "application"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'sven'
+version = '0.0.1'
+
+buildscript {
+    ext {
+        springBootVersion = '1.3.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+repositories {
+    maven { url 'http://dl.bintray.com/opendolphin/mavenrepo' }
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile 'net.sourceforge.nekohtml:nekohtml:1.9.22'
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+
+    compile 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+    compile 'org.webjars:bootstrap:3.3.1'
+    compile 'org.open-dolphin:client-javascript:1.0-RC2B1'
+
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+dependencies {
+    compile project(':server')
+    compile project(':shared')
+    compile 'org.webjars:bootstrap:3.3.1'
+}
+
+bootRun {
+    jvmArgs = ["-Dlogback.debug=true"]
+}

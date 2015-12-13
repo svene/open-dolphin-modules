@@ -1,0 +1,14 @@
+= Spring Boot App
+
+requires Java 8
+
+== Development
+
+IntelliJ IDEA: open webapp/build.gradle
+
+== Usage
+* open a terminal and cd to the _webapp_ folder.
+* invoke `./gradlew bootRun`
+* point your browser to _http://localhost:8080/appContext/hello_
+* Click on the _Greet_ button and the webpage should work as expected
+
